@@ -14,6 +14,7 @@ const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 const server = express();
 server.use(express.static(__dirname + "/views"));
+server.use(express.json());
 
 function addDataToJSON(ticketOrder) {
   // read json data asynchronously
