@@ -1,5 +1,5 @@
 import * as url from 'url';
-import express, { application } from "express";
+import express from "express";
 
 const PORT = 5115;
 
@@ -18,6 +18,8 @@ server.get("/", (req, res) => {
    res.sendFile(__dirname + "/views/index.html");
 })
 
+
+// start the server
 server.listen(PORT, () => {
 	console.log(`server running on port ${PORT}`)
 })
