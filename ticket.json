@@ -1,0 +1,30 @@
+{
+	"event": {
+		"name": "Concert of the Century",
+		"location": "Stadium",
+		"date": "2022-12-31"
+	},
+	"ticketTypes": [
+	  {
+		"type": "VIP",
+		"price": 199.99
+	  },
+	  {
+		"type": "General Admission",
+		"price": 99.99
+	  },
+	  {
+		"type": "Early bird",
+		"price": 79.99
+	  },
+	  {
+		"type": "Group",
+		"price": 69.99
+	  },
+	  {
+		"type": "Student/Senior",
+		"price": 59.99
+	  }
+	]
+  }
+  
