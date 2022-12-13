@@ -16,6 +16,15 @@ const server = express();
 server.use(express.static(__dirname + "/views"));
 server.use(express.json());
 
+/**
+ *
+ * @param {*} ticketOrder
+ *
+ * This function adds new data ticketOrder to a JSON file. It does this by reading
+ * the data from the JSON file asynchronously, parsing it as a JSON object,
+ * adding the new ticketOrder to the object, and then writing
+ * the updated object back to the JSON file.
+ */
 function addDataToJSON(ticketOrder) {
   // read json data asynchronously
   fs.readFile(path.resolve(__dirname, "data.json"), (err, data) => {
