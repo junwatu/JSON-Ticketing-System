@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node index.js"
+  },
   "type": "module",
   "devDependencies": {
     "degit": "^2.8.4"
