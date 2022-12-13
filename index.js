@@ -1,7 +1,7 @@
 import * as url from 'url';
 import express from "express";
 
-const PORT = 5115;
+const PORT = process.env.PORT || 5115;
 
 /**
  * __dirname is the path to the current directory
