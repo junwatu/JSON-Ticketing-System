@@ -92,6 +92,21 @@ server.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
 
+server.get("/concert", (req, res) => {
+  // read json data asynchronously
+  fs.readFile(path.resolve(__dirname, "ticket.json"), (err, data) => {
+    if (err) {
+      // handle the error
+      console.log(err);
+    } else {
+      // parse the JSON data
+      let jsonData = JSON.parse(data);
+      // send the JSON data back to the client
+      res.json(jsonData);
+    }
+  });
+});
+
 const ticketOrder = {
   orderId: "321",
   event: {
