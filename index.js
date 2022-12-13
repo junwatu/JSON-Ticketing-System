@@ -58,7 +58,7 @@ function deleteDataFromJSON(ticketOrderIdToDelete) {
     // Use the filter method to create a new array of orders
     // that does not include the order with the specified orderId
     const updatedOrders = jsonData.orders.filter(
-      (order) => order.orderId !== orderIdToDelete
+      (order) => order.orderId !== ticketOrderIdToDelete
     );
 
     // Overwrite the existing orders with the updated orders
@@ -110,12 +110,12 @@ const ticketOrder = {
 
 server.get("/addTicket", (req, res) => {
   addDataToJSON(ticketOrder);
-  res.end();
+  res.redirect("back");
 });
 
 server.get("/deleteTicket", (req, res) => {
   deleteDataFromJSON("321");
-  res.end();
+  res.redirect("back");
 });
 
 // start the server
