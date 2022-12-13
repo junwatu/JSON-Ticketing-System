@@ -1,1 +1,30 @@
-{}
+{
+	"orders": [
+		{
+			"orderId": "654321",
+			"event": {
+				"name": "Concert of the Century",
+				"location": "Stadium",
+				"date": "2022-12-31"
+			},
+			"orderer": {
+				"firstName": "John",
+				"lastName": "Doe",
+				"email": "jphnfoe@gmail.com"
+			},
+			"tickets": [
+				{
+					"type": "VIP",
+					"price": 199.99,
+					"quantity": 2
+				},
+				{
+					"type": "General Admission",
+					"price": 99.99,
+					"quantity": 4
+				}
+			],
+			"totalCost": 799.96
+		}
+	]
+}
