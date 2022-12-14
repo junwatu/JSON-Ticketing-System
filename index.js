@@ -107,7 +107,7 @@ server.get("/concert", (req, res) => {
   });
 });
 
-server.get("/ticket", (req, res) => {
+server.get("/tickets", (req, res) => {
   // read json data asynchronously
   fs.readFile(path.resolve(__dirname, "data.json"), (err, data) => {
     if (err) {
