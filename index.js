@@ -107,6 +107,21 @@ server.get("/concert", (req, res) => {
   });
 });
 
+server.get("/ticket", (req, res) => {
+  // read json data asynchronously
+  fs.readFile(path.resolve(__dirname, "data.json"), (err, data) => {
+    if (err) {
+      // handle the error
+      console.log(err);
+    } else {
+      // parse the JSON data
+      let jsonData = JSON.parse(data);
+      // send the JSON data back to the client
+      res.json(jsonData);
+    }
+  });
+});
+
 server.post("/addTicket", (req, res) => {
   //get json data from request body
   const ticketOrder = req.body;
