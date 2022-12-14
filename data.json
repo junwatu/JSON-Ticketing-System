@@ -12,28 +12,8 @@
         "lastName": "Doe",
         "email": "jphnfoe@gmail.com"
       },
-      "tickets": [
-        { "type": "VIP", "price": 199.99, "quantity": 2 },
-        { "type": "General Admission", "price": 99.99, "quantity": 4 }
-      ],
-      "totalCost": 799.96
-    },
-    {
-      "orderId": "321",
-      "event": {
-        "name": "Concert of the Century",
-        "location": "Stadium",
-        "date": "2022-12-31"
-      },
-      "orderer": {
-        "firstName": "Michele",
-        "lastName": "Hannah",
-        "email": "mhann@gmail.com"
-      },
-      "tickets": [
-        { "type": "VIP", "price": 199.99, "quantity": 10 },
-        { "type": "Early Bird", "price": 99.99, "quantity": 1 }
-      ]
+      "tickets": [{ "type": "VIP", "price": 199.99, "quantity": 2 }],
+      "totalCost": 399.98
     }
   ]
 }
