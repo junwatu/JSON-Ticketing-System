@@ -1,19 +1,22 @@
 {
   "orders": [
     {
-      "orderId": "654321",
-      "event": {
-        "name": "Concert of the Century",
-        "location": "Stadium",
-        "date": "2022-12-31"
-      },
-      "orderer": {
-        "firstName": "John",
-        "lastName": "Doe",
-        "email": "jphnfoe@gmail.com"
-      },
-      "tickets": [{ "type": "VIP", "price": 199.99, "quantity": 2 }],
-      "totalCost": 399.98
+      "orderId": "321314",
+      "orderer": { "name": "Jony Woo" },
+      "tickets": [{ "type": "Early bird", "price": "79.99", "quantity": 1 }],
+      "totalCost": 79.99
+    },
+    {
+      "orderId": "782644",
+      "orderer": { "name": "Luke Adam" },
+      "tickets": [{ "type": "Group", "price": "69.99", "quantity": "15" }],
+      "totalCost": 1049.85
+    },
+    {
+      "orderId": "763237",
+      "orderer": { "name": "Scoot Wilson" },
+      "tickets": [{ "type": "VIP", "price": 199.99, "quantity": 1 }],
+      "totalCost": 199.99
     }
   ]
 }
