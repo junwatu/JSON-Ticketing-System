@@ -20,6 +20,10 @@ function App() {
   const [concert, setConcert] = useState(null);
   const [ticketType, setTicketType] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const [name, setName] = useState("");
+
+  // Use the useState hook to create a new state variable for the disabled state of the submit button
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
     fetch("/concert")
@@ -34,16 +38,29 @@ function App() {
     const tickets = [];
     let id = generateOrderId();
 
-    tickets.push({
-      type: ticketType.order.split(":")[0],
-      price: ticketType.order.split(":")[1],
-      quantity: quantity,
-    });
+    if (!ticketType) {
+      tickets.push({
+        type: concert.ticketTypes[0].type,
+        price: concert.ticketTypes[0].price,
+        quantity: quantity,
+      });
+    } else {
+      tickets.push({
+        type: ticketType.order.split(":")[0],
+        price: ticketType.order.split(":")[1],
+        quantity: quantity,
+      });
+    }
 
     const ticketOrder = {
       orderId: id,
+      orderer: {
+        name,
+      },
       tickets,
-      totalCost: quantity * ticketType.order.split(":")[1],
+      totalCost: ticketType
+        ? quantity * ticketType.order.split(":")[1]
+        : quantity * concert.ticketTypes[0].price,
     };
 
     // Send the data to the server using the fetch API
@@ -94,8 +111,20 @@ function App() {
             }}
           />
         </div>
+        <div className="mb-3">
+          <label className="form-label">Your Name</label>
+          <input
+            type="text"
+            maxLength="45"
+            className="form-control"
+            onChange={(event) => {
+              setName(event.target.value);
+              setIsDisabled(event.target.value === "");
+            }}
+          />
+        </div>
 
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary" disabled={isDisabled}>
           Save
         </button>
       </form>
