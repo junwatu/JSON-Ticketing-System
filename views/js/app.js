@@ -21,6 +21,7 @@ function App() {
   const [ticketType, setTicketType] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [name, setName] = useState("");
+  const [tableData, setTableData] = useState([]);
 
   // Use the useState hook to create a new state variable for the disabled state of the submit button
   const [isDisabled, setIsDisabled] = useState(true);
@@ -30,6 +31,15 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setConcert(data);
+      });
+  }, []);
+
+  // Use useEffect() hook to retrieve table data from an API
+  useEffect(() => {
+    fetch("/tickets")
+      .then((response) => response.json())
+      .then((data) => {
+        setTableData(data.orders);
       });
   }, []);
 
@@ -70,9 +80,14 @@ function App() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(ticketOrder),
-    }).catch((err) => {
-      console.log(err);
-    });
+    })
+      .then(() => {
+        //localion reload
+        location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -105,6 +120,8 @@ function App() {
             onChange={(event) => {
               if (event.target.value > 50) {
                 setQuantity(50);
+              } else if (event.target.value < 1) {
+                setQuantity(1);
               } else {
                 setQuantity(event.target.value);
               }
@@ -128,6 +145,9 @@ function App() {
           Save
         </button>
       </form>
+      <div className="container">
+        <TicketTable tableData={tableData} />
+      </div>
     </>
   );
 }
@@ -147,6 +167,51 @@ function TicketSelect(props) {
         </option>
       ))}
     </select>
+  );
+}
+
+function TicketTable(props) {
+  const { tableData } = props;
+
+  function onClickHandler(event, row) {
+    event.preventDefault();
+
+    const dataId = row.orderId;
+    console.log(dataId);
+  }
+
+  return (
+    <table className="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Ticket Type</th>
+          <th>Total Cost</th>
+          <th>Order ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        {tableData.map((row, index) => (
+          <tr key={index}>
+            <td>{index + 1}</td>
+            <td>{row.orderer.name}</td>
+            <td>{row.tickets[0].type}</td>
+            <td>${row.totalCost.toFixed(2)}</td>
+            <td>{row.orderId}</td>
+            <td>
+              <button
+                type="button"
+                className="btn btn-lg btn-danger btn-sm"
+                onClick={(event) => onClickHandler(event, row)}
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 
