@@ -19,7 +19,7 @@ function generateOrderId() {
 function App() {
   const [concert, setConcert] = useState(null);
   const [ticketType, setTicketType] = useState(null);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     fetch("/concert")
@@ -82,7 +82,16 @@ function App() {
           <input
             type="number"
             className="form-control"
-            onChange={(event) => setQuantity(event.target.value)}
+            pattern="[0-9]+" // only allow numbers
+            value={quantity}
+            max="50"
+            onChange={(event) => {
+              if (event.target.value > 50) {
+                setQuantity(50);
+              } else {
+                setQuantity(event.target.value);
+              }
+            }}
           />
         </div>
 
