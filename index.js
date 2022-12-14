@@ -107,33 +107,10 @@ server.get("/concert", (req, res) => {
   });
 });
 
-const ticketOrder = {
-  orderId: "321",
-  event: {
-    name: "Concert of the Century",
-    location: "Stadium",
-    date: "2022-12-31",
-  },
-  orderer: {
-    firstName: "Michele",
-    lastName: "Hannah",
-    email: "mhann@gmail.com",
-  },
-  tickets: [
-    {
-      type: "VIP",
-      price: 199.99,
-      quantity: 10,
-    },
-    {
-      type: "Early Bird",
-      price: 99.99,
-      quantity: 1,
-    },
-  ],
-};
-
-server.get("/addTicket", (req, res) => {
+server.post("/addTicket", (req, res) => {
+  //get json data from request body
+  const ticketOrder = req.body;
+  // add the new data to the JSON file
   addDataToJSON(ticketOrder);
   res.redirect("back");
 });
