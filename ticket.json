@@ -6,22 +6,27 @@
   },
   "ticketTypes": [
     {
+      "id": "1",
       "type": "VIP",
       "price": 199.99
     },
     {
+      "id": "2",
       "type": "General Admission",
       "price": 99.99
     },
     {
+      "id": "3",
       "type": "Early bird",
       "price": 79.99
     },
     {
+      "id": "4",
       "type": "Group",
       "price": 69.99
     },
     {
+      "id": "5",
       "type": "Student/Senior",
       "price": 59.99
     }
