@@ -130,8 +130,10 @@ server.post("/addTicket", (req, res) => {
   res.redirect("back");
 });
 
-server.get("/deleteTicket", (req, res) => {
-  deleteDataFromJSON("321");
+server.post("/deleteTicket", (req, res) => {
+  // get delete id from request body
+  const ticketOrderIdToDelete = req.body.orderId;
+  deleteDataFromJSON(ticketOrderIdToDelete);
   res.redirect("back");
 });
 
