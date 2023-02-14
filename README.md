@@ -1,5 +1,4 @@
-# JSON-Ticketing-System
+# JSON Ticketing System
 
-simple full-stack json ticketing system
-
+![demo](ticket-booking-system.gif)
 
